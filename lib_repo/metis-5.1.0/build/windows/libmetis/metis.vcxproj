@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{771ECF55-5536-32BE-A172-68B5CC82CA04}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>metis</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\build\windows\libmetis\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metis.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metis</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib;C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\include;C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR="Release";metis_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR=\"Release\";metis_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib;C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\include;C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib;C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\include;C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/libmetis/Release/metis.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/libmetis/Release/metis.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/libmetis/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0 -BC:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows --check-stamp-file C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/libmetis/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\build\windows\libmetis\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\b64.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\blas.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\csr.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\error.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\evaluate.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\fkvkselect.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\fs.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\getopt.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\gkregex.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\graph.c">
+      <ObjectFileName>$(IntDir)/__/GKlib/graph.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\htable.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\io.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\itemsets.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\mcore.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\memory.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\omp.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\pdb.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\pqueue.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\random.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\rw.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\seq.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\sort.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\string.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\timers.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\tokenizer.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\GKlib\util.c">
+      <ObjectFileName>$(IntDir)/__/GKlib/util.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\auxapi.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\balance.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\bucketsort.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\checkgraph.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\coarsen.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\compress.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\contig.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\debug.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\fm.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\fortran.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\frename.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\gklib.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\graph.c">
+      <ObjectFileName>$(IntDir)/graph.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\initpart.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\kmetis.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\kwayfm.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\kwayrefine.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\mcutil.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\mesh.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\meshpart.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\minconn.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\mincover.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\mmd.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\ometis.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\options.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\parmetis.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\pmetis.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\refine.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\separator.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\sfm.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\srefine.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\stat.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\timing.c" />
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\util.c">
+      <ObjectFileName>$(IntDir)/util.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\libmetis\wspace.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\build\windows\ZERO_CHECK.vcxproj">
+      <Project>{7D201214-997E-3E21-A7B4-6F77F577E567}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -2,13 +2,15 @@ import pandas as pd
 import networkx as nx
 import random
 import numpy as np
-def csv_2_UGraph(file_src="../data/lastfm/lastfm_asia_edges.csv"):
+def csv_2_UGraph(file_src="../data/lastfm/lastfm_asia_edges.csv",test=False):
     '''
     The function read the csv file and then create a undirected but WEIGHTED  graph
     :param file_src:
     :return:the ud, uw graph G
     '''
     csv_src = pd.read_csv(file_src)
+    if test:
+        csv_src = csv_src.sample(frac=0.1)
     node_1 = csv_src.node_1
     node_2 = csv_src.node_2
     edges = list(zip(node_1,node_2))

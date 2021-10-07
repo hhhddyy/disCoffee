@@ -1,0 +1,9 @@
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/CMakeFiles/ALL_BUILD.dir
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/CMakeFiles/ZERO_CHECK.dir
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/libmetis/CMakeFiles/metis.dir
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/programs/CMakeFiles/gpmetis.dir
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/programs/CMakeFiles/ndmetis.dir
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/programs/CMakeFiles/mpmetis.dir
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/programs/CMakeFiles/m2gmetis.dir
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/programs/CMakeFiles/graphchk.dir
+C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/build/windows/programs/CMakeFiles/cmpfillin.dir

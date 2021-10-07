@@ -1,0 +1,155 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "include",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "include"
+				},
+				{
+					"build" : "libmetis",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "libmetis",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "programs",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "programs",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "METIS",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "cmpfillin::@8e422c029f6fe140fec0",
+					"jsonFile" : "target-cmpfillin-Debug-0aff6eb4e9d16524110f.json",
+					"name" : "cmpfillin",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "gpmetis::@8e422c029f6fe140fec0",
+					"jsonFile" : "target-gpmetis-Debug-d3671e102c55cda16c7a.json",
+					"name" : "gpmetis",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "graphchk::@8e422c029f6fe140fec0",
+					"jsonFile" : "target-graphchk-Debug-586fd6a6cbdde9230b32.json",
+					"name" : "graphchk",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "m2gmetis::@8e422c029f6fe140fec0",
+					"jsonFile" : "target-m2gmetis-Debug-0d43b1d295de16bf5f5e.json",
+					"name" : "m2gmetis",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "metis::@fdf3bd5de051f36f4a85",
+					"jsonFile" : "target-metis-Debug-6664a6e8da3dfbb41e4e.json",
+					"name" : "metis",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "mpmetis::@8e422c029f6fe140fec0",
+					"jsonFile" : "target-mpmetis-Debug-c77e763322b0b61aa15d.json",
+					"name" : "mpmetis",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ndmetis::@8e422c029f6fe140fec0",
+					"jsonFile" : "target-ndmetis-Debug-8e0711b23131c214a16e.json",
+					"name" : "ndmetis",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0/out/build/x64-Debug",
+		"source" : "C:/Users/hhhddyy/Desktop/NTU-LEARN/CE7490-DIS-SYSTEM/project1/lib_repo/metis-5.1.0"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

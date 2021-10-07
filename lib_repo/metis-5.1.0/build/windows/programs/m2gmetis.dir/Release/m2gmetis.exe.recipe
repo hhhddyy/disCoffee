@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\build\windows\x64\Release\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\hhhddyy\Desktop\NTU-LEARN\CE7490-DIS-SYSTEM\project1\lib_repo\metis-5.1.0\build\windows\programs\Release\m2gmetis.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
