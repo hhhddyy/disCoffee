@@ -121,30 +121,6 @@ def jpr(test=False):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def coarse(input,model_list,result,index):
     input_g = input[index]
     model = model_list[index]

@@ -10,7 +10,7 @@ def csv_2_UGraph(file_src="../data/lastfm/lastfm_asia_edges.csv",test=False):
     '''
     csv_src = pd.read_csv(file_src)
     if test:
-        csv_src = csv_src.sample(frac=0.1)
+        csv_src = csv_src.sample(frac=0.4)
     node_1 = csv_src.node_1
     node_2 = csv_src.node_2
     edges = list(zip(node_1,node_2))
