@@ -28,63 +28,63 @@ def jpr(G = None,test=False,num_servers=512):
     #     index = index+1
     # input_g = nx.relabel_nodes(input_g, mapping)
     # models = [LabelPropagation(),EdMot(component_count=10),SCD()]
-    # threads = [None] * 3
-    # results = [None] * 3
-    # inputs = [copy.deepcopy(input_g),copy.deepcopy(input_g),copy.deepcopy(input_g)]
-    # alg=['gmc','lp','alpa']
-    # for i in range(len(threads)):
-    #     threads[i] = Thread(target=coarse_by_networkX, args=(inputs[i], alg[i],results, i))
-    #     threads[i].start()
-    #
-    # for i in range(len(threads)):
-    #     threads[i].join()
-    #
-    # #phase2
-    #
-    # print("finish algorithm")
-    # #suppose result is a list
-    cut_weight_eachP = [0]
+    threads = [None] * 3
+    results = [None] * 3
+    inputs = [copy.deepcopy(input_g),copy.deepcopy(input_g),copy.deepcopy(input_g)]
+    alg=['gmc','lp','alpa']
+    for i in range(len(threads)):
+        threads[i] = Thread(target=coarse_by_networkX, args=(inputs[i], alg[i],results, i))
+        threads[i].start()
+
+    for i in range(len(threads)):
+        threads[i].join()
+
+    #phase2
+
+    print("finish algorithm")
+    #suppose result is a list
+    cut_weight_eachP = [0,0,0]
     # i =0
-    # for p_list in results:
-    #
-    #     while len(p_list) > num_servers:
-    #         if len(p_list)%2 >0:
-    #             half_length = int((len(p_list)+1) /2)
-    #             first_half = p_list[0:half_length]
-    #             second_half = p_list[half_length-1:]
-    #         else:
-    #             half_length = int((len(p_list)) / 2)
-    #             first_half = p_list[0:half_length]
-    #             second_half = p_list[half_length:]
-    #         if len(first_half) != len(second_half):
-    #             print("error line56",len(p_list),len(first_half),len(second_half))
-    #
-    #         p_list = [list(set(list(a) + list(b))) for a, b in zip(first_half, second_half)]
-    #     index = 0
-    #
-    #     while len(p_list) < num_servers:
-    #         element = list(p_list[index])
-    #         first_half = element[0:int(len(element)/2)]
-    #         second_half = element[int(len(element)/2):]
-    #         p_list[index] = first_half
-    #         p_list.append(second_half)
-    #         index = (index+1) % len(p_list)
-    #     results[i] = p_list
-    #     i = i+1
+    for p_list in results:
+
+        while len(p_list) > num_servers:
+            if len(p_list)%2 >0:
+                half_length = int((len(p_list)+1) /2)
+                first_half = p_list[0:half_length]
+                second_half = p_list[half_length-1:]
+            else:
+                half_length = int((len(p_list)) / 2)
+                first_half = p_list[0:half_length]
+                second_half = p_list[half_length:]
+            if len(first_half) != len(second_half):
+                print("error line56",len(p_list),len(first_half),len(second_half))
+
+            p_list = [list(set(list(a) + list(b))) for a, b in zip(first_half, second_half)]
+        index = 0
+
+        while len(p_list) < num_servers:
+            element = list(p_list[index])
+            first_half = element[0:int(len(element)/2)]
+            second_half = element[int(len(element)/2):]
+            p_list[index] = first_half
+            p_list.append(second_half)
+            index = (index+1) % len(p_list)
+        results[i] = p_list
+        i = i+1
 
     p_index =0
-    metis_part = [[]] * num_servers
-    edgecuts, parts = metiis_api(input_g, num_servers)
+    # metis_part = [[]] * num_servers
+    # edgecuts, parts = metiis_api(input_g, num_servers)
     print("JPR FINSIH PARTITION")
 
-    nodes = list(input_g.nodes.keys())
+    # nodes = list(input_g.nodes.keys())
+    #
+    # for index in range(len(list(input_g.nodes.keys()))):
+    #     node = nodes[index]
+    #     metis_part[parts[index]].append(node)
 
-    for index in range(len(list(input_g.nodes.keys()))):
-        node = nodes[index]
-        metis_part[parts[index]].append(node)
 
-
-    for p_list in [metis_part]:
+    for p_list in results:
 
         cut_in_p = [True] * len(input_g.edges)
         cut_index = 0
@@ -107,8 +107,8 @@ def jpr(G = None,test=False,num_servers=512):
 
     min_index = np.argwhere(cut_weight_eachP==np.amin(cut_weight_eachP))
 
-    # q=results[min_index[0][0]]
-    q = metis_part
+    q=results[min_index[0][0]]
+
 
 
 
@@ -145,9 +145,11 @@ def jpr(G = None,test=False,num_servers=512):
 
     total_traffic = cut_weight_eachP[min_index[0][0]]
 
+    nodes = list(input_g.nodes.keys())
     for user in G.nodes:
         min_T = 99999999
         master = -1
+
 
         for server in server_dict[user]:
             traffic = 0

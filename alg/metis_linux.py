@@ -80,8 +80,14 @@ def weight_calcuate(test,part,G=None):
                 node_in_sever[edge[1]].append(s)
                 #severs[node_in_sever[edge[0]]].append(edge[1])
                 cost += G.nodes[edge[1]]['write_weight']
+    write_cost = cost
+    for edge in list(G.edges):
+        w = G[edge[0]][edge[1]]['weight']
+        common_server_num = len(set(node_in_sever[edge[0]]).intersection(set(node_in_sever[edge[1]])))
+        unique_server_num = len(set(node_in_sever[edge[0]])) + len(set(node_in_sever[edge[1]]))-common_server_num
+        cost += (unique_server_num*w)
 
-    print("metis: cost:",cost,"----num of rep:",num_rep)
+    print("metis: cost:",cost,"write_cost",write_cost,"----num of rep:",num_rep)
     return  cost,num_rep
 
 
