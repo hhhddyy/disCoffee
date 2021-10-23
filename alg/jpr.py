@@ -3,19 +3,24 @@ import random
 
 import  networkx as nx
 import numpy as np
+
+from alg.metis_linux import metiis_api
 from lib_repo import  Coarse as metis
 import dataProcess.graphGenerator as gen
 from networkx.algorithms import community
 from threading import  Thread
-def jpr(test=False,num_servers=512):
-    if test:
-        G= gen.csv_2_UGraph(test=True)
-        input_g = gen.ug_2_lineG(G)
+def jpr(G = None,test=False,num_servers=512):
+    if G == None:
+        if test:
+            G= gen.csv_2_UGraph(test=True)
 
-    # create input line graph
-    else:
-        G=gen.csv_2_UGraph(test=True)
-        input_g = gen.ug_2_lineG(G)
+
+        # create input line graph
+        else:
+            G=gen.csv_2_UGraph(test=False)
+
+    input_g = gen.ug_2_lineG(G)
+    print("finsih input G")
     # mapping ={}
     # index =0
     # for node in input_g.nodes:
@@ -23,60 +28,70 @@ def jpr(test=False,num_servers=512):
     #     index = index+1
     # input_g = nx.relabel_nodes(input_g, mapping)
     # models = [LabelPropagation(),EdMot(component_count=10),SCD()]
-    threads = [None] * 3
-    results = [None] * 3
-    inputs = [copy.deepcopy(input_g),copy.deepcopy(input_g),copy.deepcopy(input_g)]
-    alg=['gmc','lp','alpa']
-    for i in range(len(threads)):
-        threads[i] = Thread(target=coarse_by_networkX, args=(inputs[i], alg[i],results, i))
-        threads[i].start()
-
-    for i in range(len(threads)):
-        threads[i].join()
-
-    #phase2
-
-
-    #suppose result is a list
-    cut_weight_eachP = [0,0,0]
-    i =0
-    for p_list in results:
-
-        while len(p_list) > num_servers:
-            if len(p_list)%2 >0:
-                half_length = int((len(p_list)+1) /2)
-                first_half = p_list[0:half_length]
-                second_half = p_list[half_length-1:]
-            else:
-                half_length = int((len(p_list)) / 2)
-                first_half = p_list[0:half_length]
-                second_half = p_list[half_length:]
-            if len(first_half) != len(second_half):
-                print("fuck",len(p_list),len(first_half),len(second_half))
-
-            p_list = [list(set(list(a) + list(b))) for a, b in zip(first_half, second_half)]
-        index = 0
-
-        while len(p_list) < num_servers:
-            element = list(p_list[index])
-            first_half = element[0:int(len(element)/2)]
-            second_half = element[int(len(element)/2):]
-            p_list[index] = first_half
-            p_list.append(second_half)
-            index = (index+1) % len(p_list)
-        results[i] = p_list
-        i = i+1
+    # threads = [None] * 3
+    # results = [None] * 3
+    # inputs = [copy.deepcopy(input_g),copy.deepcopy(input_g),copy.deepcopy(input_g)]
+    # alg=['gmc','lp','alpa']
+    # for i in range(len(threads)):
+    #     threads[i] = Thread(target=coarse_by_networkX, args=(inputs[i], alg[i],results, i))
+    #     threads[i].start()
+    #
+    # for i in range(len(threads)):
+    #     threads[i].join()
+    #
+    # #phase2
+    #
+    # print("finish algorithm")
+    # #suppose result is a list
+    cut_weight_eachP = [0]
+    # i =0
+    # for p_list in results:
+    #
+    #     while len(p_list) > num_servers:
+    #         if len(p_list)%2 >0:
+    #             half_length = int((len(p_list)+1) /2)
+    #             first_half = p_list[0:half_length]
+    #             second_half = p_list[half_length-1:]
+    #         else:
+    #             half_length = int((len(p_list)) / 2)
+    #             first_half = p_list[0:half_length]
+    #             second_half = p_list[half_length:]
+    #         if len(first_half) != len(second_half):
+    #             print("error line56",len(p_list),len(first_half),len(second_half))
+    #
+    #         p_list = [list(set(list(a) + list(b))) for a, b in zip(first_half, second_half)]
+    #     index = 0
+    #
+    #     while len(p_list) < num_servers:
+    #         element = list(p_list[index])
+    #         first_half = element[0:int(len(element)/2)]
+    #         second_half = element[int(len(element)/2):]
+    #         p_list[index] = first_half
+    #         p_list.append(second_half)
+    #         index = (index+1) % len(p_list)
+    #     results[i] = p_list
+    #     i = i+1
 
     p_index =0
-    for p_list in results:
-        print(len(p_list))
+    metis_part = [[]] * num_servers
+    edgecuts, parts = metiis_api(input_g, num_servers)
+    print("JPR FINSIH PARTITION")
+
+    nodes = list(input_g.nodes.keys())
+
+    for index in range(len(list(input_g.nodes.keys()))):
+        node = nodes[index]
+        metis_part[parts[index]].append(node)
+
+
+    for p_list in [metis_part]:
+
         cut_in_p = [True] * len(input_g.edges)
         cut_index = 0
         # find possible cut
         for edge in input_g.edges:
             for p in p_list:
                 p = list(p)
-
                 if edge[0] in p and edge[1] in p:
                     cut_in_p[cut_index] =False
                     break
@@ -92,11 +107,15 @@ def jpr(test=False,num_servers=512):
 
     min_index = np.argwhere(cut_weight_eachP==np.amin(cut_weight_eachP))
 
-    q=results[min_index[0][0]]
+    # q=results[min_index[0][0]]
+    q = metis_part
 
-    # then place master
+
+
+    print("jpr then place master")
     #find si
     server_dict ={}
+    num_rep = 0
     user_each_serverHold ={}
     for user in G.nodes:
         server_dict[user] =[]
@@ -109,6 +128,8 @@ def jpr(test=False,num_servers=512):
                     server_dict[user].append(server_index)
                     server_dict[user]= list(set(server_dict[user]))
             server_index = server_index +1
+    for rep in server_dict.values():
+        num_rep = num_rep + len(rep)
 
     server_index = 0
     for part in q:
@@ -120,7 +141,8 @@ def jpr(test=False,num_servers=512):
             user_each_serverHold[server].append(user)
             user_each_serverHold[server] = list(set(user_each_serverHold[server]))
     mas_each_user = {}
-    print("write: ",cut_weight_eachP[min_index[0][0]])
+    wirte_cost = cut_weight_eachP[min_index[0][0]]
+
     total_traffic = cut_weight_eachP[min_index[0][0]]
 
     for user in G.nodes:
@@ -144,8 +166,8 @@ def jpr(test=False,num_servers=512):
         total_traffic = total_traffic+min_T
 
 
-
-    print(total_traffic)
+    print("JPR write cost ",wirte_cost,"---total cost:  ",total_traffic,"rep",num_rep)
+    return  wirte_cost,total_traffic,num_rep
 
 
 
@@ -175,5 +197,3 @@ def coarse_by_networkX(input,alg,result,index):
     if alg == 'alpa':
         alpa_p=list(community.asyn_lpa_communities(input))
         result[index] = alpa_p
-
-jpr(test=False)

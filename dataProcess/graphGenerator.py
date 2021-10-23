@@ -2,7 +2,10 @@ import pandas as pd
 import networkx as nx
 import random
 import numpy as np
-def csv_2_UGraph(file_src="../data/lastfm/lastfm_asia_edges.csv",test=False,rw_ratio='balanced'):
+file_src = "../data/git_web_ml/musae_git_edges.csv"
+file_src="data/lastfm/lastfm_asia_edges.csv"
+#file_src = "../data/twitch_gamers/large_twitch_edges.csv"
+def csv_2_UGraph(file_src=file_src,test=False,rw_ratio='balanced',count=1):
     '''
     The function read the csv file and then create a undirected but WEIGHTED  graph
     :param file_src:
@@ -37,18 +40,23 @@ def csv_2_UGraph(file_src="../data/lastfm/lastfm_asia_edges.csv",test=False,rw_r
 
     for node_index in range(len(unique_node)):
         G.nodes[unique_node[node_index]]['write_weight'] = node_weight[node_index]
+
+    # then save the graph as pickle
+    # pre_fix = file_src.split('/')[2]
+    # nx.write_gpickle(G, "../graph/"+pre_fix+"-"+rw_ratio+str(count)+".gpickle")
+    # readPickle("../graph/"+pre_fix+"-"+rw_ratio+str(count)+".gpickle")
     return G
 
 
 
-def ug_2_InteractionG(G:nx.Graph,loaded=False):
+def ug_2_InteractionG(G:nx.Graph,loaded=False,file_src = None):
     '''
     Take an undirected graph and then generated an interaction graph
     :param G:
     :return:
     '''
     if loaded:
-        #todo
+        G = nx.read_gpickle(file_src)
         return
 
     interactionG = nx.MultiDiGraph()
@@ -84,6 +92,17 @@ def ug_2_lineG(G:nx.Graph,loaded=False):
         L[edge[0]][edge[1]]['weight'] = weight
 
     return L
+def readPickle(file_src):
+    G = nx.read_gpickle(file_src)
+    #  to node list neighbors and weight
+    node_list = list(G.nodes.keys())
+    neighbors = {}
+    write_weight = {}
+    for node in node_list:
+        neighbors[node] = list(G.neighbors(node))
+        write_weight[node] = G.nodes[node]['write_weight']
+    #print(neighbors,write_weight)
+    return  node_list,neighbors,write_weight
 
 
 

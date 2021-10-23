@@ -14,7 +14,7 @@ def metiis_api(input_graph,part):
     #print(edgecuts,parts)
     return edgecuts,parts
 
-def weight_calcuate(test,part):
+def weight_calcuate(test,part,G=None):
     '''
     In order to calcuate the cost, we only need to calcuate the write cost after performing
     the rep
@@ -22,14 +22,15 @@ def weight_calcuate(test,part):
     :param part: num of parts
     :return:
     '''
-    if test:
-        G= gen.csv_2_UGraph(test=test)
-        # input_g = gen.ug_2_lineG(G)
+    if G == None:
+        if test:
+            G= gen.csv_2_UGraph(test=test)
+            # input_g = gen.ug_2_lineG(G)
 
-    # create input line graph
-    else:
-        G=gen.csv_2_UGraph(test=test)
-        # input_g = gen.ug_2_lineG(G)
+        # create input line graph
+        else:
+            G=gen.csv_2_UGraph(test=test)
+            # input_g = gen.ug_2_lineG(G)
 
     # edgecut is the num of cuts in G and parts tell us which part the node belongs to
     edgecuts,parts=metiis_api(G,part)
@@ -79,8 +80,9 @@ def weight_calcuate(test,part):
                 node_in_sever[edge[1]].append(s)
                 #severs[node_in_sever[edge[0]]].append(edge[1])
                 cost += G.nodes[edge[1]]['write_weight']
-    print("cost:",cost)
-    print("num of rep:",num_rep)
+
+    print("metis: cost:",cost,"----num of rep:",num_rep)
+    return  cost,num_rep
 
 
 
@@ -92,4 +94,5 @@ def weight_calcuate(test,part):
 
 
 
-weight_calcuate(test=False,part=64)
+
+
