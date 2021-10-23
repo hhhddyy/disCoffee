@@ -2,27 +2,38 @@ import pandas as pd
 import networkx as nx
 import random
 import numpy as np
-def csv_2_UGraph(file_src="../data/lastfm/lastfm_asia_edges.csv",test=False):
+def csv_2_UGraph(file_src="../data/lastfm/lastfm_asia_edges.csv",test=False,rw_ratio='balanced'):
     '''
     The function read the csv file and then create a undirected but WEIGHTED  graph
     :param file_src:
+    :param rw_ratio: read write weight
     :return:the ud, uw graph G
     '''
     csv_src = pd.read_csv(file_src)
     if test:
-        csv_src = csv_src.sample(frac=0.4)
+        csv_src = csv_src.sample(frac=0.1)
     node_1 = csv_src.node_1
     node_2 = csv_src.node_2
     edges = list(zip(node_1,node_2))
     G = nx.Graph()
     G.add_edges_from(edges)
-    # then assign weight
+    # then assign read weight
     for edge in G.edges:
-        G[edge[0]][edge[1]]['weight'] = random.randint(1,10)
+        if rw_ratio=='balanced':
+            G[edge[0]][edge[1]]['weight'] = random.randint(1,10)
+        elif rw_ratio =='read':
+            G[edge[0]][edge[1]]['weight'] = random.randint(7, 10)
+        else:
+            G[edge[0]][edge[1]]['weight'] = random.randint(1, 3)
 
     unique_node = list(G.nodes.keys())
+    if rw_ratio == 'balanced':
+        node_weight = np.random.randint(1, 10, len(unique_node))
+    elif rw_ratio == 'read':
+        node_weight = np.random.randint(1, 3, len(unique_node))
+    else:
+        node_weight = np.random.randint(7, 10, len(unique_node))
 
-    node_weight = np.random.randint(1, 10, len(unique_node))
 
     for node_index in range(len(unique_node)):
         G.nodes[unique_node[node_index]]['write_weight'] = node_weight[node_index]
