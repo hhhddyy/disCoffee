@@ -4,11 +4,8 @@ import random
 import  networkx as nx
 import numpy as np
 from lib_repo import  Coarse as metis
-import community
-import partition_networkx
 import dataProcess.graphGenerator as gen
 from networkx.algorithms import community
-from karateclub import LabelPropagation,EdMot,SCD
 from threading import  Thread
 def jpr(test=False):
     if test:
@@ -25,7 +22,7 @@ def jpr(test=False):
     #     mapping[node] = index
     #     index = index+1
     # input_g = nx.relabel_nodes(input_g, mapping)
-    models = [LabelPropagation(),EdMot(component_count=10),SCD()]
+    # models = [LabelPropagation(),EdMot(component_count=10),SCD()]
     threads = [None] * 3
     results = [None] * 3
     inputs = [copy.deepcopy(input_g),copy.deepcopy(input_g),copy.deepcopy(input_g)]

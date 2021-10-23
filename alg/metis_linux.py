@@ -10,15 +10,10 @@ import numpy as np
 # then pip3 install metis
 
 def metiis_api(input_graph,part):
-
-
-
     (edgecuts, parts)  = metis.part_graph(input_graph,part)
-    print(edgecuts,parts)
+    #print(edgecuts,parts)
     return edgecuts,parts
-# G = metis.example_networkx()
-# (edgecuts, parts) = metis.part_graph(G, 3)
-# print(edgecuts)
+
 def weight_calcuate(test,part):
     '''
     In order to calcuate the cost, we only need to calcuate the write cost after performing
@@ -63,7 +58,7 @@ def weight_calcuate(test,part):
             # compare the write cost
             if G.nodes[edge[0]]['write_weight'] < G.nodes[edge[1]]['write_weight']:
                 #severs[node_in_sever[edge[1]]].append(edge[0])
-                #then load balance, choose the one with min number node
+                #then load balance, choose the one server with min number node
                 min_load_server = node_in_sever[edge[1]][0]
                 for s in node_in_sever[edge[1]]:
                     if len(severs[min_load_server]) > len(severs[s]):
@@ -97,4 +92,4 @@ def weight_calcuate(test,part):
 
 
 
-weight_calcuate(test=False,part=128)
+weight_calcuate(test=False,part=64)
